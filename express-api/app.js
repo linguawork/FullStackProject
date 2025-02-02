@@ -8,7 +8,7 @@ const logger = require('morgan');
 
 const app = express();
 
-// view engine setup
+// view engine setup: Jade
 app.set('view engine', 'jade');
 
 
