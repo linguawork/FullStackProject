@@ -8,8 +8,6 @@ const logger = require('morgan');
 
 const app = express();
 
-// view engine setup: Jade
-app.set('view engine', 'jade');
 
 
 //This is all important to connect CORS
@@ -18,6 +16,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+// view engine setup: Jade
+app.set('view engine', 'jade');
 
 
 //все что идет на API идет в папку routes
