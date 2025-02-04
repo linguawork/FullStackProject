@@ -4,6 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+//30:01 работа с файловой системой
+const fs = require('fs')
 
 
 const app = express();
@@ -19,9 +21,18 @@ app.use(cookieParser());
 // view engine setup: Jade
 app.set('view engine', 'jade');
 
+//28:37 раздаваьб статич файлы тпиа картирнок ищ поакиу 'uploads'
+//папка будет автоматически создаваться
+app.use('/uploads', express.static('uploads'))
+
 
 //все что идет на API идет в папку routes
 app.use('/api', require('./routes'))
+
+//30:41проверка наличия файла or folder
+if(!fs.existsSync('uploads')){
+  fs.mkdirSync('uploads')
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
