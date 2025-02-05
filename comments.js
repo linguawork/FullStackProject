@@ -40,3 +40,15 @@ html
 */
 
 //folder views deleted
+
+
+//https://github.com/brian7346/express-threads-api
+//Link to express and DB with Docker already made
+//The link has the instruction for downloading the image of MongoDB
+/*
+  docker run --name mongo \
+       -p 27017:27017 \
+       -e MONGO_INITDB_ROOT_USERNAME="monty" \
+       -e MONGO_INITDB_ROOT_PASSWORD="pass" \
+       -d prismagraphql/mongo-single-replica:5.0.3
+*/
