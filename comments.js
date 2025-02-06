@@ -52,3 +52,10 @@ html
        -e MONGO_INITDB_ROOT_PASSWORD="pass" \
        -d prismagraphql/mongo-single-replica:5.0.3
 */
+
+
+
+//Prisma
+//https://www.youtube.com/watch?v=pmz6aWVIlOE
+
+//55 pulled Docker image with MongoDB to my PC and school one.
