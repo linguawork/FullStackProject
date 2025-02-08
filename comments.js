@@ -45,6 +45,7 @@ html
 //https://github.com/brian7346/express-threads-api
 //Link to express and DB with Docker already made
 //The link has the instruction for downloading the image of MongoDB
+
 /*
   docker run --name mongo \
        -p 27017:27017 \
@@ -59,3 +60,21 @@ html
 //https://www.youtube.com/watch?v=pmz6aWVIlOE
 
 //55 pulled Docker image with MongoDB to my PC and school one.
+
+/* 
+    1:09:38
+    After creating models in Prisma
+    let's run 
+  
+  1. npx prisma format // форматируем бд, исправляем ошибкa
+    1:11:42
+  2. npx prisma db push //все изменения пушим в базу данных
+    1:12
+  3.npx prisma studio
+    http://localhost:5555/ 
+    открывается на локал хосте студия (запускать лучше в отдельном терминале. 
+    В отдельном окне также работает сервер npm start на http://localhost:3000/api/register)
+*/
+
+// Good command ALT+Z - это авто перенос кода или текста на экране
+// и умещение его в окно
