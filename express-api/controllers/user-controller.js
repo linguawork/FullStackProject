@@ -1,5 +1,11 @@
-//можно и функции писать, здесь представлен объект
+const { prisma } = require("../prisma/prisma-client")
+const bcrypt = require('bcryptjs')
+const Jdenticon = require('jdenticon')
+const path = require('path')
 
+
+
+//можно и функции писать, здесь представлен объект
 const UserController = {
 
     register: async (req, res) =>{
@@ -20,11 +26,21 @@ const UserController = {
         }
         try {
             //проверяем существование юзера в базе по эл почте
+            //import prisma
             const existingUser = await prisma.user.findUnique(({where: {email}}))
 
             if(existingUser){
                 return res.status(400).json({error: 'The user exists in the DB already'})         
             }
+        //1:43:00 hashing password
+        
+        const hashedPassword = await bcrypt.hash(password, 10)
+
+        
+
+
+
+
 
         } catch (error) {
             
