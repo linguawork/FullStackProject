@@ -13,6 +13,23 @@ const UserController = {
                 // console.log(email, password, name)
                 // res.send('OK')
 
+        const { email, password, name } = req.body;
+        //проверка заполнения юзером всех полей в форме на сайте
+        if(!email || !name || !password){
+            return res.status(400).json({error: 'All the form fields are required to fill in'})         
+        }
+        try {
+            //проверяем существование юзера в базе по эл почте
+            const existingUser = await prisma.user.findUnique(({where: {email}}))
+
+            if(existingUser){
+                return res.status(400).json({error: 'The user exists in the DB already'})         
+            }
+
+        } catch (error) {
+            
+        }
+
 
     },
     login: async (req, res) =>{
