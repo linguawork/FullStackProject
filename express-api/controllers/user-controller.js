@@ -3,7 +3,7 @@
 const UserController = {
 
     register: async (req, res) =>{
-        res.send('register ')
+        res.send('register')
     },
     login: async (req, res) =>{
         res.send('login ')
