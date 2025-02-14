@@ -9,7 +9,8 @@ const router = express.Router();
     middleware for handling multipart/form-data 
     (commonly used for file uploads) in Node.js applications
 */
-const multer = require('multer')
+const multer = require('multer');
+const UserController = require('../controllers/user-controller');
 //загружать в папку Uploads
 const uploadDestination = 'uploads'
 
@@ -34,11 +35,20 @@ const storage  = multer.diskStorage({
 const uploads = multer({storage:storage})
 
 
+/* 
+    router.get('/register', (req, res) => {
+        //пишем пока ответ 21:30
+        res.send('register');
+    });
+*/
 
-router.get('/register', (req, res) => {
-    //пишем пока ответ 21:30
-    res.send('register');
-});
+//1:21:57 modifying the functions
+router.post('/register', UserController.register)
+router.post('/login', UserController.login)
+router.get('/current', UserController.current)
+router.get('/users/:id', UserController.getUserById)
+router.put('/users/:id', UserController.updateUser)
+
 
 module.exports = router;
 
