@@ -1,7 +1,8 @@
 const { prisma } = require("../prisma/prisma-client")
 const bcrypt = require('bcryptjs')
-const Jdenticon = require('jdenticon')
-const path = require('path')
+const Jdenticon = require('jdenticon') //либа для аватаров
+const path = require('path') // path lib
+const fs = require('fs') // import file sys
 
 
 
@@ -33,19 +34,39 @@ const UserController = {
                 return res.status(400).json({error: 'The user exists in the DB already'})         
             }
         //1:43:00 hashing password
-        
         const hashedPassword = await bcrypt.hash(password, 10)
 
-        
+        // создание картинки аватара
+        const png = Jdenticon.toPng(name, 200)//имя аватара и размер 200 на 200
+        //название
+        const avatarName = `${name}_${Date.now()}.png`; // имя и дата
+        // path lib
+        const avatarPath = path.join(__dirname, '../uploads', avatarName)
+        fs.writeFileSync(avatarPath, png) //жди пока не запишешь файл
+     // передаем Path и саму картинку
 
+    // в БД создаем юзера
+        const user = await prisma.user.create({
+            data:{
+                email, 
+                password: hashedPassword, 
+                name,
+                avatarUrl: `/uploads/${avatarPath}`
+            }
+        })
 
-
-
+        res.json(user)// отвечаем этим юзером
 
         } catch (error) {
             
+            console.log('Error in register', error)
+            // пишем для себя ошибку
+            res.status(500).json({error: 'Internal server error'})
+            //response to user 
         }
-
+/*
+    создание юзера по ссыоке register: 1:45:36
+*/
 
     },
     login: async (req, res) =>{
@@ -64,3 +85,6 @@ const UserController = {
 };
 
 module.exports = UserController;
+
+
+
