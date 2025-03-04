@@ -78,3 +78,19 @@ html
 
 // Good command ALT+Z - это авто перенос кода или текста на экране
 // и умещение его в окно
+
+
+/*
+  After 1:45
+  enter express-api folder
+  npm i, 
+  npm run dev, 
+  npx prisma studio
+  sudo docker ps -a 
+  (if you type without sudo, then docker will not be seen, 
+  this will show the docker image with MongoDB in the image)
+*/
+
+/*
+
+*/

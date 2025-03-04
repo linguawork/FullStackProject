@@ -45,7 +45,7 @@ const UserController = {
         fs.writeFileSync(avatarPath, png) //жди пока не запишешь файл
      // передаем Path и саму картинку
 
-    // в БД создаем юзера
+    //в БД создаем юзера
         const user = await prisma.user.create({
             data:{
                 email, 
@@ -63,10 +63,11 @@ const UserController = {
             // пишем для себя ошибку
             res.status(500).json({error: 'Internal server error'})
             //response to user 
-        }
+        }  
 /*
+
     создание юзера по ссыоке register: 1:45:36
-*/
+*/ 
 
     },
     login: async (req, res) =>{
